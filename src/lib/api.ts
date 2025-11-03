@@ -47,8 +47,6 @@ export async function addPost(payload: NewPost): Promise<Post> {
 
 export async function editPost(id: number, patch: Partial<Post>): Promise<Post> {
   // NOTE: DummyJSON can only "edit" known ids (roughly 1..150).
-  // For local temp ids created in the UI, you should skip calling this API
-  // and keep the optimistic update. See page.tsx handlers.
   return request<Post>(`${POSTS}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
